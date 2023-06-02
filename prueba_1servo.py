@@ -1,8 +1,3 @@
-import cv2
-from collections import Counter
-from module import findnameoflandmark,findpostion,speak
-import math
-
 from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
 from time import *
