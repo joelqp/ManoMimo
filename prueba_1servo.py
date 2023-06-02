@@ -1,5 +1,5 @@
 from adafruit_servokit import ServoKit
-kit = ServoKit(channels=16)
+kit = ServoKit(channels=8)
 from time import *
 
 
@@ -49,6 +49,6 @@ while True:
     #  cv2.imshow("Frame", frame1);
     #  key = cv2.waitKey(1) & 0xFF
     #  if key == ord("q"):
-    #     speak("sir you have"+str(up)+"fingers up  and"+str(down)+"fingers down") 
+    #     speak("sir you have"+str(up)+"fingers up  and"+str(down)+"fingers down")
     #  if key == ord("s"):
     #    break
