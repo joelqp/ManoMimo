@@ -4,19 +4,16 @@ import board
 import busio
 # Initialize the PCA9685 controller
 i2c = busio.I2C(board.SCL, board.SDA)
-pca = PCA9685(i2c,address=0x40)
+pca = PCA9685(i2c)
 
-pca.frequency = 25  # Set the PWM frequency (adjust if necessary)
+pca.frequency = 50  # Set the PWM frequency (adjust if necessary)
 servo_channel=pca.channels[0]
 
 import adafruit_motor.servo
-servo = adafruit_motor.servo.Servo(servo_channel)
-
-servo.angle=140
-time.sleep(1)
-servo.angle=0
-time.sleep(1)
-pca.deinit()
+servo = adafruit_motor.servo.Servo(servo_channel, min_pulse=1000, max_pulse=2000)
+for i in range(180):
+	servo.angle=i
+	ti
 
 def set_servo_angle(channel, angle):
     duty_cycle = int((angle / 180) * 65535)
