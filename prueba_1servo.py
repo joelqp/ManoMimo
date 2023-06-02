@@ -1,18 +1,16 @@
-from adafruit_servokit import ServoKit
-kit = ServoKit(channels=8)
-from time import *
+import time
+from adafruit_pca9685 import PCA9685
 
+# Initialize the PCA9685 controller
+pca = PCA9685()
+pca.frequency = 50  # Set the PWM frequency (adjust if necessary)
 
-kit.servo[0].angle = 140
-# kit.servo[1].angle = 140
-# kit.servo[2].angle = 130
-# kit.servo[3].angle = 160
-# kit.servo[4].angle = 140
+def set_servo_angle(channel, angle):
+    duty_cycle = int((angle / 180) * 65535)
+    pca.channels[channel].duty_cycle = duty_cycle
 
-
-
-while True:
-           #My Additions
-        kit.servo[0].angle = 50
-
-
+# Example usage:
+servo_channel = 0  # The channel your servo is connected to
+set_servo_angle(servo_channel, 90)  # Set the servo to 90 degrees
+time.sleep(1)  # Wait for 1 second
+set_servo_angle(servo_channel, 0)  # Set the servo to 0 degrees
